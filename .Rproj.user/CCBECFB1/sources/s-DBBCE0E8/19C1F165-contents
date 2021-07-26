@@ -1,0 +1,315 @@
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("magrittr")
+install.packages("lme4")
+install.packages("car")
+install.packages("Rcpp")
+install.packages("sjPlot")
+install.packages("foreach")
+install.packages("doParallel")
+
+library(dplyr) # for easy data manipulation
+library(tidyr) # ditto
+library(magrittr) # for piping
+library(lme4) # for mixed effects models
+library(car) # for logit transformation with adjustment
+library(Rcpp)
+library(sjPlot) #for plotting lmer mods
+library(foreach) # running loops
+library(doParallel) # running loops in parallel
+
+#Set working directory
+setwd("F:/Code_PREDICTS/data")
+
+#Read rds file
+Diversity <- readRDS("diversity-2021-07-12-02-32-53.rds")
+
+diversity <- Diversity %>%
+  # Combine primary and secondary vegatation together as natural vegetation
+  mutate(
+    LandUse = ifelse(Predominant_habitat == "Primary forest" |
+                       Predominant_habitat == "Primary non-forest" |
+                       Predominant_habitat == "Young secondary vegetation"|
+                       Predominant_habitat == "Intermediate secondary vegetation"|
+                       Predominant_habitat == "Mature secondary vegetation"|
+                       Predominant_habitat == "Secondary vegetation (indeterminate age)",
+                     "Natural and Semi-Natural vegetation",
+                     paste(Predominant_habitat)),
+    
+    # change cannot decide into NA
+    LandUse = ifelse(Predominant_habitat == "Cannot decide",
+                     NA, 
+                     paste(LandUse)),
+    
+    # relevel the factor so that Natural vegetation is the first level (so that it is the intercept term in models)
+    LandUse = factor(LandUse),
+    LandUse = relevel(LandUse, ref = "Natural and Semi-Natural vegetation")
+  )
+
+#Select country in China and Brazil respectively
+
+C_diversity <- filter(diversity,Country == "China")
+
+B_diversity <- filter(diversity,Country == "Brazil")
+
+
+
+table(C_diversity$LandUse)
+table(B_diversity$LandUse)
+
+#Calculate BII for China
+C_abundance_data <- C_diversity  %>%
+  
+  # pull out just the abundance measures
+  filter(Diversity_metric_type == "Abundance") %>%
+  
+  # group by SSBS (each unique value corresponds to a unique site)
+  group_by(SSBS) %>%
+  
+  # now add up all the abundance measurements within each site
+  mutate(TotalAbundance = sum(Measurement)) %>%
+  
+  # ungroup
+  ungroup() %>%
+  
+  # pull out unique sites
+  distinct(SSBS, .keep_all = TRUE) %>%
+  
+  # now group by Study ID
+  group_by(SS) %>%
+  
+  # pull out the maximum abundance for each study
+  mutate(MaxAbundance = max(TotalAbundance)) %>%
+  
+  # ungroup
+  ungroup() %>%
+  
+  # now rescale total abundance, so that within each study, abundance varies from 0 to 1.
+  mutate(RescaledAbundance = TotalAbundance/MaxAbundance)
+
+
+#Calculate BII for Brazil
+B_abundance_data <- B_diversity  %>%
+  
+  # pull out just the abundance measures
+  filter(Diversity_metric_type == "Abundance") %>%
+  
+  # group by SSBS (each unique value corresponds to a unique site)
+  group_by(SSBS) %>%
+  
+  # now add up all the abundance measurements within each site
+  mutate(TotalAbundance = sum(Measurement)) %>%
+  
+  # ungroup
+  ungroup() %>%
+  
+  # pull out unique sites
+  distinct(SSBS, .keep_all = TRUE) %>%
+  
+  # now group by Study ID
+  group_by(SS) %>%
+  
+  # pull out the maximum abundance for each study
+  mutate(MaxAbundance = max(TotalAbundance)) %>%
+  
+  # ungroup
+  ungroup() %>%
+  
+  # now rescale total abundance, so that within each study, abundance varies from 0 to 1.
+  mutate(RescaledAbundance = TotalAbundance/MaxAbundance)
+
+
+
+
+
+hist(B_abundance_data$RescaledAbundance)
+hist(C_abundance_data$RescaledAbundance)
+plot(B_abundance_data$RescaledAbundance)
+plot(C_abundance_data$RescaledAbundance)
+qqnorm(B_abundance_data$RescaledAbundance)
+qqnorm(C_abundance_data$RescaledAbundance)
+
+#Mixed linear model for Insecta abundance data in China and Brazil
+C_lm <- lmer(RescaledAbundance ~ LandUse + (1|SS), C_abundance_data)
+B_lm <- lmer(RescaledAbundance ~ LandUse + (1|SS), B_abundance_data)
+
+summary(C_lm)
+
+summary(B_lm)
+
+
+sjPlot::plot_model(B_lm)
+sjPlot::plot_model(C_lm)
+
+
+-----------------------------------------------------------------
+
+cd_data_input <- diversity %>%
+  
+  # drop any rows with unknown LandUse
+  filter(!is.na(LandUse)) %>%
+  
+  # pull out only the abundance data
+  filter(Diversity_metric_type == "Abundance") %>%
+  
+  # group by Study
+  group_by(SS) %>%
+  
+  # calculate the number of unique sampling efforts within that study
+  mutate(n_sample_effort = n_distinct(Sampling_effort)) %>%
+  
+  # calculate the number of unique species sampled in that study
+  mutate(n_species = n_distinct(Taxon_name_entered)) %>%
+  
+  # check if there are any Natural and Semi-Natural vegetation sites in the dataset
+  mutate(n_natural_records = sum(LandUse == "Natural and Semi-Natural vegetation")) %>%
+  
+  # ungroup
+  ungroup() %>%
+  
+  # now keep only the studies with one unique sampling effort
+  filter(n_sample_effort == 1) %>%
+  
+  # and keep only studies with more than one species 
+  # as these studies clearly aren't looking at assemblage-level diversity
+  filter(n_species > 1) %>%
+  
+  # and keep only studies with at least some Primary minimal data
+  filter(n_natural_records > 0) %>%
+  
+  # drop empty factor levels
+  droplevels()
+
+
+
+getJacAbSym <- function(s1, s2, data){
+  
+  # get the list of species that are present in site 1 (i.e., their abundance was greater than 0)
+  s1species <- data %>%
+    
+    # filter out the SSBS that matches s1
+    filter(SSBS == s1) %>%
+    
+    # filter out the species where the Measurement (abundance) is greater than 0
+    filter(Measurement > 0) %>%
+    
+    # get the unique species from this dataset
+    distinct(Taxon_name_entered) %>%
+    
+    # pull out the column into a vector
+    pull
+  
+  # for site 2, get the total abundance of species that are also present in site 1
+  
+  s2abundance_s1species <- data %>%
+    
+    # filter out the SSBS that matches s2
+    filter(SSBS == s2) %>%
+    
+    # filter out the species that are also present in site 1
+    filter(Taxon_name_entered %in% s1species) %>%
+    
+    # pull out the Measurement into a vector
+    pull(Measurement) %>%
+    
+    # calculate the sum
+    sum()
+  
+  # calculate the total abundance of all species in site 2
+  s2_sum <- data %>%
+    
+    # filter out the SSBS that matches s2
+    filter(SSBS == s2) %>%
+    
+    # pull out the measurement column (the abundance)
+    pull(Measurement) %>%
+    
+    # calculate the sum
+    sum() 
+  
+  
+  # Now calculate the compositional similarity
+  # this is the number of individuals of species also found in s1, divided by the total abundance in s2 
+  # so that equates to the proportion of individuals in s2 that are of species also found in s1
+  
+  sor <- s2abundance_s1species / s2_sum
+  
+  
+  # if there are no taxa in common, then sor = 0
+  # if abundances of all taxa are zero, then similarity becomes NaN.
+  return(sor)
+  
+}
+
+# get a vector of each study to loop over
+studies <- distinct(cd_data_input, SS) %>%
+  pull()
+
+
+registerDoParallel(cores = 2)
+
+# If you're not familiar with loops (or with foreach loops):
+# I'm going to loop over every element (s) in studies and combine the results of each loop by rbinding them into one large dataset. Since we're using functions from different packages within this loop, we need to specify them (if you don't do the loop in parallel, this isn't necessary)
+cd_data <- foreach(s = studies, 
+                   .combine = rbind,
+                   .packages = c("dplyr", "magrittr", "geosphere")) %dopar% {
+                     
+                     # filter out the given study
+                     data_ss <- filter(cd_data_input, SS == s)
+                     
+                     # pull out the SSBS and LandUse information (we'll use this later to assign a land use contrast to each pair of site
+                     site_data <- data_ss %>%
+                       dplyr::select(SSBS, LandUse) %>%
+                       distinct(SSBS, .keep_all = TRUE)
+                     
+                     # pull out the sites that are Natural and Semi-Natural vegetation (we only want to use comparisons with the baseline)
+                     baseline_sites <- site_data %>%
+                       filter(LandUse == "Natural and Semi-Natural vegetation") %>%
+                       pull(SSBS)
+                     
+                     # pull out all the sites
+                     site_list <- site_data %>%
+                       pull(SSBS)
+                     
+                     
+                     # get all site x site comparisons for this study
+                     site_comparisons <- expand.grid(baseline_sites, site_list) %>%
+                       
+                       # rename the columns so they will be what the compositional similarity function expects for ease
+                       rename(s1 = Var1, s2 = Var2) %>%
+                       
+                       # remove the comparisons where the same site is being compared to itself
+                       filter(s1 != s2)
+                     
+                     
+                     # apply the compositional similarity function over each site combination in the dataset
+                     sor <- apply(site_comparisons, 1, function(y) getJacAbSym(data = data_ss, s1 = y['s1'], s2 = y['s2']))
+                     
+                     # calculate the geographic distance between sites
+                     # first pull out the lat and longs for each site combination
+                     s1LatLong <- as.matrix(data_ss[match(site_comparisons$s1, data_ss$SSBS), c('Longitude','Latitude')])
+                     s2LatLong <- as.matrix(data_ss[match(site_comparisons$s2, data_ss$SSBS), c('Longitude','Latitude')])
+                     
+                     # then calculate the distance between sites
+                     dist <- distHaversine(s1LatLong, s2LatLong)
+                     
+                     # pull out the land-use contrast for those site combinations
+                     Contrast <- paste(site_data$LandUse[match(site_comparisons$s1, site_data$SSBS)],
+                                       site_data$LandUse[match(site_comparisons$s2, site_data$SSBS)], 
+                                       sep = "-")
+                     
+                     # put all the information into a single dataframe
+                     
+                     study_results <- data.frame(site_comparisons,
+                                                 sor,
+                                                 dist,
+                                                 Contrast,
+                                                 SS = s,
+                                                 stringsAsFactors = TRUE)
+                     
+                     
+                     
+                   }
+
+# stop running things in parallel
+registerDoSEQ()
