@@ -1,0 +1,1487 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Analysis: insecta diversity data in China and Brazil},
+  pdfauthor={Lilei Chen},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Analysis: insecta diversity data in China and Brazil}
+\author{Lilei Chen}
+\date{2021/8/5}
+
+\begin{document}
+\maketitle
+
+\hypertarget{load-the-packages}{%
+\subsection{Load the packages}\label{load-the-packages}}
+
+This R markdown included every step I have done. I changed the
+categories to suit a more reasonable analysis, I have also merged sites
+to deal with the situations such as ten traps for same land use, use
+intensity, coordinates and start/end times are treated as 10 sites,
+which is better to treat them as one. Code are derived from De
+Palma(2019), a work-through about PREDICTS data.
+
+Load the packages we are going to use.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr) }\CommentTok{\# for easy data manipulation}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyr) }\CommentTok{\# ditto}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'tidyr' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lme4) }\CommentTok{\# for mixed effects models}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'lme4' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: Matrix
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'Matrix'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:tidyr':
+## 
+##     expand, pack, unpack
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sjPlot) }\CommentTok{\#for visualizing results}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'sjPlot' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## Registered S3 methods overwritten by 'parameters':
+##   method                           from      
+##   as.double.parameters_kurtosis    datawizard
+##   as.double.parameters_skewness    datawizard
+##   as.double.parameters_smoothness  datawizard
+##   as.numeric.parameters_kurtosis   datawizard
+##   as.numeric.parameters_skewness   datawizard
+##   as.numeric.parameters_smoothness datawizard
+##   print.parameters_distribution    datawizard
+##   print.parameters_kurtosis        datawizard
+##   print.parameters_skewness        datawizard
+##   summary.parameters_kurtosis      datawizard
+##   summary.parameters_skewness      datawizard
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(car) }\CommentTok{\# for getting anova tables with significance values}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'car' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'car'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     recode
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2) }\CommentTok{\# for plotting}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DHARMa) }\CommentTok{\# for model criticism plots}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'DHARMa' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## This is DHARMa 0.4.3. For overview type '?DHARMa'. For recent changes, type news(package = 'DHARMa') Note: Syntax of plotResiduals has changed in 0.3.0, see ?plotResiduals for details
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(effects) }\CommentTok{\# for extracting model effects}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'effects' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## lattice theme set by effectsTheme()
+## See ?effectsTheme for details.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(merTools) }\CommentTok{\# using it for extracting estimates for plotting}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'merTools' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: arm
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'arm' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: MASS
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'MASS'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## arm (Version 1.11-2, built: 2020-7-27)
+\end{verbatim}
+
+\begin{verbatim}
+## Working directory is F:/Code_PREDICTS/PREDICTS
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'arm'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:car':
+## 
+##     logit
+\end{verbatim}
+
+\hypertarget{read-in-and-process-the-diversity-data}{%
+\subsection{Read in and process the diversity
+data}\label{read-in-and-process-the-diversity-data}}
+
+Read in the raw data from PREDICTS.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set working directory}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"F:/Code\_PREDICTS/data"}\NormalTok{)}
+
+\CommentTok{\# read rds file}
+\NormalTok{diversity }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"diversity{-}2021{-}08{-}01{-}02{-}33{-}01.rds"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{insecta-data-in-china-and-brazil}{%
+\subsection{Insecta data in China and
+Brazil}\label{insecta-data-in-china-and-brazil}}
+
+Now we have data from PREDICTS, this study focus on insecta in China and
+Brazil, therefore, the next step is to select such data we want.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Insecta\_diversity }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(diversity, Class }\SpecialCharTok{==} \StringTok{"Insecta"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+                      \FunctionTok{filter}\NormalTok{(Country }\SpecialCharTok{==} \StringTok{"China"}\SpecialCharTok{|}\NormalTok{ Country }\SpecialCharTok{==} \StringTok{"Brazil"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's have a look about the data to see if filter()worked.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{unique}\NormalTok{(Insecta\_diversity}\SpecialCharTok{$}\NormalTok{Country)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Brazil China 
+## 246 Levels: Afghanistan 脜land Islands Albania Algeria ... Zimbabwe
+\end{verbatim}
+
+\hypertarget{land-use-and-use-intensity}{%
+\subsection{Land use and use
+intensity}\label{land-use-and-use-intensity}}
+
+We are focusing on land use and use intensity, the columns of
+\texttt{Predominant\_habitat} and \texttt{Use\_intensity} contain
+information of land use and use intensity. let's check the details.
+
+\begin{verbatim}
+##        
+##         Primary forest Primary non-forest Young secondary vegetation
+##   FALSE          35048              34398                      41667
+##   TRUE             298                 98                       1137
+##        
+##         Intermediate secondary vegetation Mature secondary vegetation
+##   FALSE                             16937                       52231
+##   TRUE                                704                           0
+##        
+##         Secondary vegetation (indeterminate age) Plantation forest Pasture
+##   FALSE                                     2202             20111   46805
+##   TRUE                                      1968               770     492
+##        
+##         Cropland Urban Cannot decide
+##   FALSE    12431   258             0
+##   TRUE      3116  6387          1418
+\end{verbatim}
+
+It seems that China has 0 mature secondary vegetation and fair less
+numbers of primary forest and primary non-forest. We need to combine
+some of these levels for further analysis.
+
+\begin{verbatim}
+##        
+##         Minimal use Light use Intense use Cannot decide
+##   FALSE      180167     78257        2832           832
+##   TRUE         4128      5920        1616          4724
+\end{verbatim}
+
+Although the data of use intensity in China is less than data in Brazil,
+it is able to conduct the analysis. Based on the data, We are going to
+combine Primary forest and Primary non-forest as Primary vegetation.
+Young secondary vegetation, Intermediate secondary vegetation, Mature
+secondary vegetation and Secondary vegetation (indeterminate age) will
+be combined as Secondary vegetation. The Cannot decide in Land use and
+use intensity will be put as NA.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# combine to primary vegetation and secondary vegetation}
+\NormalTok{relevled\_diversity }\OtherTok{\textless{}{-}}\NormalTok{ Insecta\_diversity }\SpecialCharTok{\%\textgreater{}\%}
+     \CommentTok{\# combine primary forest and primary non{-}forest into primary vegetation}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{LandUse =} \FunctionTok{ifelse}\NormalTok{(Predominant\_habitat }\SpecialCharTok{==} \StringTok{"Primary forest"} \SpecialCharTok{|}
+\NormalTok{                       Predominant\_habitat }\SpecialCharTok{==} \StringTok{"Primary non{-}forest"}\NormalTok{,}
+                     \StringTok{"Primary vegetation"}\NormalTok{,}
+                     \FunctionTok{paste}\NormalTok{(Predominant\_habitat)),}
+    \CommentTok{\# combine all secondary vegetation}
+    \AttributeTok{LandUse =} \FunctionTok{ifelse}\NormalTok{(Predominant\_habitat }\SpecialCharTok{==} \StringTok{"Young secondary vegetation"}\SpecialCharTok{|}
+\NormalTok{                       Predominant\_habitat }\SpecialCharTok{==} \StringTok{"Intermediate secondary vegetation"}\SpecialCharTok{|}
+\NormalTok{                       Predominant\_habitat }\SpecialCharTok{==} \StringTok{"Mature secondary vegetation"}\SpecialCharTok{|}
+\NormalTok{                       Predominant\_habitat }\SpecialCharTok{==} \StringTok{"Secondary vegetation (indeterminate age)"}\NormalTok{,}
+                     \StringTok{"Secondary vegetation"}\NormalTok{,}
+                     \FunctionTok{paste}\NormalTok{(LandUse)),}
+    
+    \CommentTok{\# change cannot decide into NA}
+    \AttributeTok{LandUse =} \FunctionTok{ifelse}\NormalTok{(Predominant\_habitat }\SpecialCharTok{==} \StringTok{"Cannot decide"}\NormalTok{,}
+                     \ConstantTok{NA}\NormalTok{, }
+                     \FunctionTok{paste}\NormalTok{(LandUse)),}
+    \CommentTok{\# relevel the factor so that Primary vegetation will be the ref (so that it is the intercept term in models)}
+    \AttributeTok{LandUse =} \FunctionTok{factor}\NormalTok{(LandUse),}
+    \AttributeTok{LandUse =} \FunctionTok{relevel}\NormalTok{(LandUse, }\AttributeTok{ref =} \StringTok{"Primary vegetation"}\NormalTok{),}
+    
+    \CommentTok{\# change cannot decide into NA in UseIntensity}
+    \AttributeTok{UseIntensity =} \FunctionTok{ifelse}\NormalTok{(Use\_intensity }\SpecialCharTok{==} \StringTok{"Cannot decide"}\NormalTok{,}
+                          \ConstantTok{NA}\NormalTok{,}
+                          \FunctionTok{paste}\NormalTok{(Use\_intensity)),}
+    \CommentTok{\# relevel the factor so that Minimal use is the first level (so that it is the intercept term in models)}
+    \AttributeTok{UseIntensity =} \FunctionTok{factor}\NormalTok{(UseIntensity),}
+    \AttributeTok{UseIntensity =} \FunctionTok{relevel}\NormalTok{(UseIntensity, }\AttributeTok{ref =} \StringTok{"Minimal use"}\NormalTok{)}
+\NormalTok{  )}
+
+\CommentTok{\# check \textquotesingle{}LandUse\textquotesingle{} and \textquotesingle{}UseIntensity\textquotesingle{}}
+\FunctionTok{table}\NormalTok{(relevled\_diversity}\SpecialCharTok{$}\NormalTok{LandUse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   Primary vegetation             Cropland              Pasture 
+##                69842                15547                47297 
+##    Plantation forest Secondary vegetation                Urban 
+##                20881               116846                 6645
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(relevled\_diversity}\SpecialCharTok{$}\NormalTok{UseIntensity)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Minimal use Intense use   Light use 
+##      184295        4448       84177
+\end{verbatim}
+
+\hypertarget{correct-sampling-effort}{%
+\subsection{Correct sampling effort}\label{correct-sampling-effort}}
+
+Now we have releveled data with suitable categories for further
+analysis. Next, we need abundance and richness data of insecta. To do
+that, the rescale of sampling effort is necessary for diversity
+measurements which are sensitive to sampling effort. We rescale sampling
+effort for each study to have a maximum value of 1. Let's have a look if
+there are studies with missing sampling effort.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{studies\_check }\OtherTok{\textless{}{-}}\NormalTok{ relevled\_diversity }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# filter the rows where Sampling efforts are NA}
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(Sampling\_effort)) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# keep only unique studies}
+  \FunctionTok{distinct}\NormalTok{(SS) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# pull the vector}
+  \FunctionTok{pull}\NormalTok{(SS)}
+
+\NormalTok{relevled\_diversity }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# filter the rows where studies are those that had missing sampling efforts (above)}
+  \FunctionTok{filter}\NormalTok{(SS }\SpecialCharTok{\%in\%}\NormalTok{ studies\_check) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# drop missing levels}
+  \FunctionTok{droplevels}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# pull out the sampling efforts of these studies}
+  \FunctionTok{pull}\NormalTok{(Sampling\_effort)}\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# summaries to check that ALL the data are NAs}
+  \FunctionTok{summary}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 
+\end{verbatim}
+
+There is no NA for sampling effort of all studies so we don't need to
+replace any value. Otherwise we should replace NAs as 1 assuming that
+the sampling efforts don't vary within a study and correct those that
+need it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{relevled\_diversity }\OtherTok{\textless{}{-}}\NormalTok{ relevled\_diversity }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# group by Study}
+  \FunctionTok{group\_by}\NormalTok{(SS) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# check how many sampling efforts there are in each study}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{n\_sample\_effort =} \FunctionTok{n\_distinct}\NormalTok{(Sampling\_effort),}
+         \CommentTok{\# get the maximum sampling effort for the studies}
+         
+         \AttributeTok{max\_sample\_effort =} \FunctionTok{max}\NormalTok{(Sampling\_effort)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# if the study has more than one sampling effort, correct the abundance}
+  
+  \CommentTok{\# so if there\textquotesingle{}s only one sampling effort, then create a \textquotesingle{}dummy sampling effort\textquotesingle{} of 1 so that we don\textquotesingle{}t change the abundances when we do the divisions. Otherwise, we give it the maximum sampling effort.}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DividingEffort =} \FunctionTok{ifelse}\NormalTok{(n\_sample\_effort }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, max\_sample\_effort)) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# if the diversity metric isn\textquotesingle{}t sensitive to the effort, then we\textquotesingle{}ll change the value to 1 too (so we won\textquotesingle{}t end up changing the measurement), otherwise leave it as it is}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{DividingEffort =} \FunctionTok{ifelse}\NormalTok{(Diversity\_metric\_is\_effort\_sensitive }\SpecialCharTok{==} \ConstantTok{FALSE}\NormalTok{, }\DecValTok{1}\NormalTok{, DividingEffort)) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# now let\textquotesingle{}s create the effort corrected measurement by dividing the abundances by the sampling efforts}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Corrected\_sampling\_effort =}\NormalTok{ Sampling\_effort }\SpecialCharTok{/}\NormalTok{ max\_sample\_effort,}
+         \AttributeTok{Effort\_corrected\_measurement =}\NormalTok{ Measurement }\SpecialCharTok{*}\NormalTok{ Corrected\_sampling\_effort) }
+
+\FunctionTok{summary}\NormalTok{(relevled\_diversity}\SpecialCharTok{$}\NormalTok{Corrected\_sampling\_effort)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.125   1.000   1.000   0.988   1.000   1.000
+\end{verbatim}
+
+We need to test if the \texttt{Corrected\_sampling\_effort} is working,
+I know that LC1\_2015\_\_Su 1 has multiple sampling efforts during the
+data inputting, let's check it to see if it works.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{relevled\_diversity }\SpecialCharTok{\%\textgreater{}\%} 
+  \CommentTok{\# filter out the test study}
+  \FunctionTok{filter}\NormalTok{(SS }\SpecialCharTok{==} \StringTok{"LC1\_2015\_\_Su 1"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \CommentTok{\# select out the columns to check}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(Measurement, Effort\_corrected\_measurement, Sampling\_effort, max\_sample\_effort, Corrected\_sampling\_effort)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5,490 x 5
+##    Measurement Effort_corrected_measurement Sampling_effort max_sample_effort
+##          <dbl>                        <dbl>           <dbl>             <dbl>
+##  1           0                            0               5                30
+##  2           0                            0               5                30
+##  3           0                            0               5                30
+##  4           0                            0               5                30
+##  5           0                            0               5                30
+##  6           0                            0               5                30
+##  7           0                            0               5                30
+##  8           0                            0               5                30
+##  9           0                            0               5                30
+## 10           0                            0               5                30
+## # ... with 5,480 more rows, and 1 more variable:
+## #   Corrected_sampling_effort <dbl>
+\end{verbatim}
+
+It is working, now let's check studies that have same sampling effort,
+here I test LC1\_2021\_\_Ge 1 since I know it has the same sampling
+efforts during data inputting.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{relevled\_diversity }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(SS }\SpecialCharTok{==} \StringTok{"LC1\_2021\_\_Ge 1"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(Measurement, Effort\_corrected\_measurement)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 350 x 2
+##    Measurement Effort_corrected_measurement
+##          <dbl>                        <dbl>
+##  1           0                            0
+##  2           0                            0
+##  3           0                            0
+##  4           0                            0
+##  5           1                            1
+##  6           0                            0
+##  7           0                            0
+##  8           0                            0
+##  9           0                            0
+## 10           1                            1
+## # ... with 340 more rows
+\end{verbatim}
+
+\hypertarget{merge-sites}{%
+\subsection{Merge sites}\label{merge-sites}}
+
+Next we'll merge any sites that are within the same land-use type and
+that have identical coordinates, start and end dates. This is to deal
+with such situations, for instance, authors might put 10 pit traps
+seperately as ten sampling points. Then, it looks like we have mores
+sites but actually they have same land use, same use intensity and same
+coordinates, which means they are just one site.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{relevled\_diversity }\OtherTok{\textless{}{-}}\NormalTok{ relevled\_diversity }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# group by aspects of the sites that should be identical if we need to merge the abundances}
+  \CommentTok{\# I only want to merge abundances if they are within the same study and block}
+  \CommentTok{\# as I\textquotesingle{}m assuming that even if the locations and sampling times are the same, if the blocks or studies are different, then there is some good reason for this.}
+  \FunctionTok{group\_by}\NormalTok{(Source\_ID, Study\_number, Study\_name, Block,}
+           \CommentTok{\#diversity metric type}
+\NormalTok{           Diversity\_metric, Diversity\_metric\_type, Diversity\_metric\_unit,}
+\NormalTok{           Diversity\_metric\_is\_effort\_sensitive,}
+           
+           \CommentTok{\#details of the sites}
+\NormalTok{           Predominant\_habitat, Use\_intensity, Years\_since\_fragmentation\_or\_conversion,}
+           
+           \CommentTok{\#details of the sampling method}
+\NormalTok{           Sampling\_method, Sampling\_effort\_unit,}
+           
+           \CommentTok{\#species identity}
+\NormalTok{           Study\_common\_taxon, Rank\_of\_study\_common\_taxon,}
+\NormalTok{           Taxon\_number, Taxon\_name\_entered,}
+\NormalTok{           Indication, Parsed\_name,}
+\NormalTok{           Best\_guess\_binomial, COL\_ID, Taxon, Name\_status,}
+\NormalTok{           Rank, Kingdom, Phylum, Class, Order, Family, Genus, Species,}
+\NormalTok{           Higher\_taxon,}
+           
+           \CommentTok{\#site location}
+\NormalTok{           Longitude, Latitude,}
+           
+           \CommentTok{\#sampling time}
+\NormalTok{           Sample\_start\_earliest, Sample\_end\_latest, Sample\_date\_resolution) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# if the diversity metric is occurrence:}
+  \CommentTok{\#   if it is present at all, give it a 1, if it is always absent, give it a 0,}
+  \CommentTok{\# otherwise (if the metric is either abundance or species richness):}
+  \CommentTok{\#   calculate the weighted abundance/richness for each taxonomic group, weighted by sampling effort}
+  
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{merged\_diversity =} 
+           \FunctionTok{ifelse}\NormalTok{(Diversity\_metric\_type }\SpecialCharTok{==} \StringTok{"Occurrence"}\NormalTok{,}
+                  \CommentTok{\# if any of the occurrence values are 1, \textasciigrave{}any\textasciigrave{} will return TRUE. If you sum a logical, TRUE becomes 1 and FALSE becomes 0}
+                  \FunctionTok{sum}\NormalTok{(}\FunctionTok{any}\NormalTok{(Effort\_corrected\_measurement }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{)),}
+                  
+                  \CommentTok{\# note that since we\textquotesingle{}ve already corrected the sampling effort, this is essentially a mean rather than a weighted mean for abundance measurements. It\textquotesingle{}s a weighted mean for species richness though where sampling efforts vary.}
+\NormalTok{                  stats}\SpecialCharTok{::}\FunctionTok{weighted.mean}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Effort\_corrected\_measurement,}
+                                       \AttributeTok{w =}\NormalTok{ Corrected\_sampling\_effort))}
+\NormalTok{         )}
+
+\CommentTok{\# pull out the grouping data (so we can double check how many records we\textquotesingle{}re merging for each)}
+\NormalTok{group\_dat }\OtherTok{\textless{}{-}}\NormalTok{ relevled\_diversity }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_data}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{nvals\_merged =} \FunctionTok{lengths}\NormalTok{(.rows),}
+         \AttributeTok{merge\_ID =} \FunctionTok{row\_number}\NormalTok{())}
+
+\CommentTok{\# ungroup the relevled\_diversity data for future use}
+\NormalTok{relevled\_diversity }\OtherTok{\textless{}{-}} \FunctionTok{ungroup}\NormalTok{(relevled\_diversity)}
+
+\CommentTok{\# create a dataset where we can extract just the merged data if we want to}
+\NormalTok{diversity\_merged }\OtherTok{\textless{}{-}}\NormalTok{ relevled\_diversity }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(group\_dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = c("Source_ID", "Study_number", "Study_name", "Diversity_metric", "Diversity_metric_unit", "Diversity_metric_type", "Diversity_metric_is_effort_sensitive", "Sampling_method", "Sampling_effort_unit", "Block", "Sample_start_earliest", "Sample_end_latest", "Sample_date_resolution", "Predominant_habitat", "Use_intensity", "Years_since_fragmentation_or_conversion", "Longitude", "Latitude", "Taxon_number", "Taxon_name_entered", "Indication", "Parsed_name", "COL_ID", "Taxon", "Name_status", "Rank", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "Higher_taxon", "Study_common_taxon", "Rank_of_study_common_taxon", "Best_guess_binomial")
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# check that the merging has worked (row numbers should be equal right now)}
+\FunctionTok{nrow}\NormalTok{(relevled\_diversity) }\SpecialCharTok{==} \FunctionTok{nrow}\NormalTok{(diversity\_merged)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+Now let's test that the sites have been merged correctly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_data }\OtherTok{\textless{}{-}}\NormalTok{ diversity\_merged }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(nvals\_merged }\SpecialCharTok{\textgreater{}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{(merge\_ID, }\AttributeTok{.keep\_all =} \ConstantTok{TRUE}\NormalTok{)}
+
+\NormalTok{test1 }\OtherTok{\textless{}{-}}\NormalTok{ diversity\_merged }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(merge\_ID }\SpecialCharTok{==}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{merge\_ID[}\DecValTok{1}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(SS, SSB,}
+\NormalTok{         Diversity\_metric, Diversity\_metric\_type, Diversity\_metric\_unit,}
+\NormalTok{         Predominant\_habitat, Use\_intensity, Years\_since\_fragmentation\_or\_conversion,}
+\NormalTok{         Sampling\_method, Sampling\_effort\_unit,}
+\NormalTok{         Study\_common\_taxon, Rank\_of\_study\_common\_taxon,}
+\NormalTok{         Taxon\_name\_entered,}
+\NormalTok{         Best\_guess\_binomial,}
+\NormalTok{         Longitude, Latitude,}
+\NormalTok{         Sample\_start\_earliest, Sample\_end\_latest, Sample\_date\_resolution,}
+\NormalTok{         Effort\_corrected\_measurement,}
+\NormalTok{         Corrected\_sampling\_effort,}
+\NormalTok{         merged\_diversity,}
+\NormalTok{         .rows,}
+\NormalTok{         nvals\_merged,}
+\NormalTok{         merge\_ID}
+\NormalTok{         )}
+
+\NormalTok{test1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 25
+##    SS                  SSB    Diversity_metric Diversity_metri~ Diversity_metri~
+##    <fct>               <fct>  <fct>            <fct>            <fct>           
+##  1 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+##  2 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+##  3 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+##  4 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+##  5 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+##  6 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+##  7 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+##  8 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+##  9 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+## 10 AD2_2013__Schmidt 1 AD2_2~ occurrence       Occurrence       presence/absence
+## # ... with 20 more variables: Predominant_habitat <fct>, Use_intensity <fct>,
+## #   Years_since_fragmentation_or_conversion <dbl>, Sampling_method <fct>,
+## #   Sampling_effort_unit <fct>, Study_common_taxon <fct>,
+## #   Rank_of_study_common_taxon <fct>, Taxon_name_entered <fct>,
+## #   Best_guess_binomial <fct>, Longitude <dbl>, Latitude <dbl>,
+## #   Sample_start_earliest <date>, Sample_end_latest <date>,
+## #   Sample_date_resolution <fct>, Effort_corrected_measurement <dbl>, ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{paste}\NormalTok{(test\_data}\SpecialCharTok{$}\NormalTok{SS[}\DecValTok{8000}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "AD2_2017__Novais 1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test2 }\OtherTok{\textless{}{-}}\NormalTok{ diversity\_merged }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(merge\_ID }\SpecialCharTok{==}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{merge\_ID[}\DecValTok{8000}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(SS, SSB,}
+\NormalTok{         Diversity\_metric, Diversity\_metric\_type, Diversity\_metric\_unit,}
+\NormalTok{         Predominant\_habitat, Use\_intensity, Years\_since\_fragmentation\_or\_conversion,}
+\NormalTok{         Sampling\_method, Sampling\_effort\_unit,}
+\NormalTok{         Study\_common\_taxon, Rank\_of\_study\_common\_taxon,}
+\NormalTok{         Taxon\_name\_entered,}
+\NormalTok{         Best\_guess\_binomial,}
+\NormalTok{         Longitude, Latitude,}
+\NormalTok{         Sample\_start\_earliest, Sample\_end\_latest, Sample\_date\_resolution,}
+\NormalTok{         Effort\_corrected\_measurement,}
+\NormalTok{         Corrected\_sampling\_effort,}
+\NormalTok{         merged\_diversity,}
+\NormalTok{         .rows,}
+\NormalTok{         nvals\_merged,}
+\NormalTok{         merge\_ID}
+\NormalTok{         )}
+
+\NormalTok{test2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 25
+##   SS                 SSB     Diversity_metric Diversity_metric~ Diversity_metri~
+##   <fct>              <fct>   <fct>            <fct>             <fct>           
+## 1 AD2_2017__Novais 1 "AD2_2~ abundance        Abundance         individuals     
+## 2 AD2_2017__Novais 1 "AD2_2~ abundance        Abundance         individuals     
+## 3 AD2_2017__Novais 1 "AD2_2~ abundance        Abundance         individuals     
+## 4 AD2_2017__Novais 1 "AD2_2~ abundance        Abundance         individuals     
+## 5 AD2_2017__Novais 1 "AD2_2~ abundance        Abundance         individuals     
+## 6 AD2_2017__Novais 1 "AD2_2~ abundance        Abundance         individuals     
+## # ... with 20 more variables: Predominant_habitat <fct>, Use_intensity <fct>,
+## #   Years_since_fragmentation_or_conversion <dbl>, Sampling_method <fct>,
+## #   Sampling_effort_unit <fct>, Study_common_taxon <fct>,
+## #   Rank_of_study_common_taxon <fct>, Taxon_name_entered <fct>,
+## #   Best_guess_binomial <fct>, Longitude <dbl>, Latitude <dbl>,
+## #   Sample_start_earliest <date>, Sample_end_latest <date>,
+## #   Sample_date_resolution <fct>, Effort_corrected_measurement <dbl>, ...
+\end{verbatim}
+
+Now let's check some studies that didn't need merging.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_data }\OtherTok{\textless{}{-}}\NormalTok{ diversity\_merged }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(nvals\_merged }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{distinct}\NormalTok{(merge\_ID, }\AttributeTok{.keep\_all =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{paste}\NormalTok{(test\_data}\SpecialCharTok{$}\NormalTok{SS[}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "AD1_2002__Tonhasca 1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test3 }\OtherTok{\textless{}{-}}\NormalTok{ diversity\_merged }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(merge\_ID }\SpecialCharTok{==}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{merge\_ID[}\DecValTok{1}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(SS, SSB,}
+\NormalTok{         Diversity\_metric, Diversity\_metric\_type, Diversity\_metric\_unit,}
+\NormalTok{         Predominant\_habitat, Use\_intensity, Years\_since\_fragmentation\_or\_conversion,}
+\NormalTok{         Sampling\_method, Sampling\_effort\_unit,}
+\NormalTok{         Study\_common\_taxon, Rank\_of\_study\_common\_taxon,}
+\NormalTok{         Taxon\_name\_entered,}
+\NormalTok{         Best\_guess\_binomial,}
+\NormalTok{         Longitude, Latitude,}
+\NormalTok{         Sample\_start\_earliest, Sample\_end\_latest, Sample\_date\_resolution,}
+\NormalTok{         Effort\_corrected\_measurement,}
+\NormalTok{         Corrected\_sampling\_effort,}
+\NormalTok{         merged\_diversity,}
+\NormalTok{         .rows,}
+\NormalTok{         nvals\_merged,}
+\NormalTok{         merge\_ID}
+\NormalTok{         )}
+
+\NormalTok{test3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 25
+##   SS                   SSB    Diversity_metric Diversity_metri~ Diversity_metri~
+##   <fct>                <fct>  <fct>            <fct>            <fct>           
+## 1 AD1_2002__Tonhasca 1 "AD1_~ abundance        Abundance        individuals     
+## # ... with 20 more variables: Predominant_habitat <fct>, Use_intensity <fct>,
+## #   Years_since_fragmentation_or_conversion <dbl>, Sampling_method <fct>,
+## #   Sampling_effort_unit <fct>, Study_common_taxon <fct>,
+## #   Rank_of_study_common_taxon <fct>, Taxon_name_entered <fct>,
+## #   Best_guess_binomial <fct>, Longitude <dbl>, Latitude <dbl>,
+## #   Sample_start_earliest <date>, Sample_end_latest <date>,
+## #   Sample_date_resolution <fct>, Effort_corrected_measurement <dbl>, ...
+\end{verbatim}
+
+Everything is working as planed, let's go for abundance and richness
+data.
+
+\hypertarget{calculate-abundance-and-richness-data}{%
+\subsection{Calculate abundance and richness
+data}\label{calculate-abundance-and-richness-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sites }\OtherTok{\textless{}{-}}\NormalTok{ diversity\_merged }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# pull out only the merged diversity data}
+  \FunctionTok{distinct}\NormalTok{(merge\_ID, }\AttributeTok{.keep\_all =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# re{-}make SSB and SSBS values since we\textquotesingle{}ve now dropped a bunch of values}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{SS =} \FunctionTok{paste}\NormalTok{(Source\_ID, Study\_number),}
+         \AttributeTok{SSB =} \FunctionTok{paste}\NormalTok{(SS, Block),}
+         \AttributeTok{SSBS =} \FunctionTok{paste}\NormalTok{(SSB, Site\_number)) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# group by SSBS (each unique value corresponds to a unique site)}
+  \FunctionTok{group\_by}\NormalTok{(SSBS) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# now add up all the abundance measurements within each site}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{TotalAbundance =} \FunctionTok{ifelse}\NormalTok{(Diversity\_metric\_type }\SpecialCharTok{==} \StringTok{"Abundance"}\NormalTok{,}
+                                 \FunctionTok{sum}\NormalTok{(merged\_diversity),}
+                                 \CommentTok{\# if the diversity metric type isn\textquotesingle{}t Abundance, then leave the TotalAbundance measurement as NA}
+                                 \ConstantTok{NA}\NormalTok{),}
+         
+         \AttributeTok{SpeciesRichness =} \FunctionTok{ifelse}\NormalTok{(Diversity\_metric\_type }\SpecialCharTok{==} \StringTok{"Species richness"}\NormalTok{,}
+\NormalTok{                                  merged\_diversity,}
+                                  \CommentTok{\# for abundance and occurrence measurements, count the number of unique species names that are present at the site }
+                                  \FunctionTok{n\_distinct}\NormalTok{(Best\_guess\_binomial[merged\_diversity }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{]))) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# ungroup}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# pull out unique sites}
+  \FunctionTok{distinct}\NormalTok{(SSBS, }\AttributeTok{.keep\_all =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# now group by Study ID}
+  \FunctionTok{group\_by}\NormalTok{(SS) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# pull out the maximum abundance for each study}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{MaxAbundance =} \FunctionTok{max}\NormalTok{(TotalAbundance)) }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# ungroup}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  
+  \CommentTok{\# now rescale total abundance, so that within each study, abundance varies from 0 to 1.}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{RescaledAbundance =}\NormalTok{ TotalAbundance}\SpecialCharTok{/}\NormalTok{MaxAbundance)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{start-to-model}{%
+\subsection{Start to model}\label{start-to-model}}
+
+\hypertarget{collinearity}{%
+\subsection{collinearity}\label{collinearity}}
+
+Check if there is collinearity for the variables we are going to use.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\StringTok{"https://highstat.com/Books/Book2/HighstatLibV10.R"}\NormalTok{)}
+
+\FunctionTok{corvif}\NormalTok{(sites[ , }\FunctionTok{c}\NormalTok{(}\StringTok{"LandUse"}\NormalTok{, }\StringTok{"UseIntensity"}\NormalTok{, }\StringTok{"Country"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 
+## Variance inflation factors
+## 
+##                  GVIF Df GVIF^(1/2Df)
+## LandUse      3.186850  5     1.122887
+## UseIntensity 1.970537  2     1.184803
+## Country      1.664981  1     1.290341
+\end{verbatim}
+
+From the GVIFs, LandUse, Useintensity and Country all have values
+smaller than 3 which indicates the collinearity check is ok.
+
+\hypertarget{complete-cases}{%
+\subsection{complete cases}\label{complete-cases}}
+
+Before the modelling, we need to drop the row that has NA in our
+explanatory variables which is RescaledAbundance, LandUse, UseIntensity
+and Country.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_data\_ab }\OtherTok{\textless{}{-}} \FunctionTok{drop\_na}\NormalTok{(sites, }
+\NormalTok{                         RescaledAbundance, LandUse,}
+\NormalTok{                         UseIntensity, Country)}
+
+\NormalTok{model\_data\_sr }\OtherTok{\textless{}{-}} \FunctionTok{drop\_na}\NormalTok{(sites, }
+\NormalTok{                         SpeciesRichness, LandUse,}
+\NormalTok{                         UseIntensity, Country)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{modeling}{%
+\subsection{Modeling}\label{modeling}}
+
+We will analyze the abundance data first. lmer model is used for
+abundance data, we should check the distribution of residuals first.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mab }\OtherTok{\textless{}{-}} \FunctionTok{lmer}\NormalTok{(RescaledAbundance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LandUse }\SpecialCharTok{+}\NormalTok{ UseIntensity }\SpecialCharTok{+}\NormalTok{ Country }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{SS), }\AttributeTok{data =}\NormalTok{ model\_data\_ab)}
+\NormalTok{simulationOutput }\OtherTok{\textless{}{-}}\FunctionTok{simulateResiduals}\NormalTok{(}\AttributeTok{fittedModel =}\NormalTok{ mab, }\AttributeTok{plot =}\NormalTok{ F)}
+\FunctionTok{plot}\NormalTok{(simulationOutput)}\CommentTok{\# check the residuals plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analysis-for-insecta-data_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+Based on the above plots, log transformation can help. To avoid log(0),
+0.01 is added to `RescaledAbundance'.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_data\_ab }\OtherTok{\textless{}{-}} \FunctionTok{mutate}\NormalTok{(model\_data\_ab, }
+                        \AttributeTok{logAbundance =} \FunctionTok{log}\NormalTok{(}\FloatTok{0.01} \SpecialCharTok{+}\NormalTok{ RescaledAbundance))}
+\NormalTok{mab }\OtherTok{\textless{}{-}} \FunctionTok{lmer}\NormalTok{(logAbundance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LandUse }\SpecialCharTok{+}\NormalTok{ UseIntensity }\SpecialCharTok{+}\NormalTok{ Country }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{SS), }\AttributeTok{data =}\NormalTok{ model\_data\_ab)}
+\NormalTok{simulationOutput }\OtherTok{\textless{}{-}}\FunctionTok{simulateResiduals}\NormalTok{(}\AttributeTok{fittedModel =}\NormalTok{ mab, }\AttributeTok{plot =}\NormalTok{ F)}
+\FunctionTok{plot}\NormalTok{(simulationOutput)}\CommentTok{\# check the residuals plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analysis-for-insecta-data_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+This is ok to work now. Next we build a model for richness data. Since
+it is count data, we will use glmer and poisson errors. For posisson
+error structure, we need to check for overdispersion first.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{msr }\OtherTok{\textless{}{-}} \FunctionTok{glmer}\NormalTok{(SpeciesRichness }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LandUse }\SpecialCharTok{+}\NormalTok{ UseIntensity }\SpecialCharTok{+}\NormalTok{ Country }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{SS) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{SSB), }\AttributeTok{data =}\NormalTok{ model\_data\_sr,}\AttributeTok{family =} \StringTok{"poisson"}\NormalTok{)}
+\CommentTok{\# check overdispersion}
+\CommentTok{\# load in an overdispersion function from here: https://bbolker.github.io/mixedmodels{-}misc/glmmFAQ.html\#testing{-}for{-}overdispersioncomputing{-}overdispersion{-}factor}
+\NormalTok{overdisp\_fun }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(model) \{}
+\NormalTok{    rdf }\OtherTok{\textless{}{-}} \FunctionTok{df.residual}\NormalTok{(model)}
+\NormalTok{    rp }\OtherTok{\textless{}{-}} \FunctionTok{residuals}\NormalTok{(model,}\AttributeTok{type=}\StringTok{"pearson"}\NormalTok{)}
+\NormalTok{    Pearson.chisq }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(rp}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{    prat }\OtherTok{\textless{}{-}}\NormalTok{ Pearson.chisq}\SpecialCharTok{/}\NormalTok{rdf}
+\NormalTok{    pval }\OtherTok{\textless{}{-}} \FunctionTok{pchisq}\NormalTok{(Pearson.chisq, }\AttributeTok{df=}\NormalTok{rdf, }\AttributeTok{lower.tail=}\ConstantTok{FALSE}\NormalTok{)}
+    \FunctionTok{c}\NormalTok{(}\AttributeTok{chisq=}\NormalTok{Pearson.chisq,}\AttributeTok{ratio=}\NormalTok{prat,}\AttributeTok{rdf=}\NormalTok{rdf,}\AttributeTok{p=}\NormalTok{pval)}
+\NormalTok{\}}
+
+\CommentTok{\# test the species richness model for overdispersion}
+\FunctionTok{overdisp\_fun}\NormalTok{(msr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        chisq        ratio          rdf            p 
+## 1501.3467993    0.9982359 1504.0000000    0.5144573
+\end{verbatim}
+
+P value is 0.514 which indicates the model is fine. My study also want
+to compare a model in which Country interacts with the other fixed
+effects (*), vs a model in which Country is only an additive effect (+).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mab2 }\OtherTok{\textless{}{-}} \FunctionTok{lmer}\NormalTok{(logAbundance }\SpecialCharTok{\textasciitilde{}}\NormalTok{ (LandUse }\SpecialCharTok{+}\NormalTok{ UseIntensity) }\SpecialCharTok{*}\NormalTok{ Country }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{SS), }\AttributeTok{data =}\NormalTok{ model\_data\_ab)}
+
+\NormalTok{msr2 }\OtherTok{\textless{}{-}} \FunctionTok{glmer}\NormalTok{(SpeciesRichness }\SpecialCharTok{\textasciitilde{}}\NormalTok{ (LandUse }\SpecialCharTok{+}\NormalTok{ UseIntensity) }\SpecialCharTok{*}\NormalTok{ Country }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{SS) }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{SSB), }\AttributeTok{data =}\NormalTok{ model\_data\_sr, }\AttributeTok{family =} \StringTok{"poisson"}\NormalTok{, }\AttributeTok{control =} \FunctionTok{glmerControl}\NormalTok{(}\AttributeTok{optimizer =} \StringTok{"bobyqa"}\NormalTok{, }\AttributeTok{optCtrl =} \FunctionTok{list}\NormalTok{(}\AttributeTok{maxfun =} \DecValTok{20000}\NormalTok{))) }\CommentTok{\# the following code: control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 20000), is added since this model cannot converge}
+
+
+\FunctionTok{anova}\NormalTok{(mab, mab2, }\AttributeTok{refit =} \ConstantTok{FALSE}\NormalTok{) }\CommentTok{\# refit = FALSE is added due to the warning message: refitting model(s) with ML (instead of REML)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Data: model_data_ab
+## Models:
+## mab: logAbundance ~ LandUse + UseIntensity + Country + (1 | SS)
+## mab2: logAbundance ~ (LandUse + UseIntensity) * Country + (1 | SS)
+##      npar    AIC    BIC  logLik deviance  Chisq Df Pr(>Chisq)
+## mab    11 3526.5 3582.8 -1752.2   3504.5                     
+## mab2   18 3529.6 3621.8 -1746.8   3493.6 10.846  7     0.1455
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{anova}\NormalTok{(msr, msr2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Data: model_data_sr
+## Models:
+## msr: SpeciesRichness ~ LandUse + UseIntensity + Country + (1 | SS) + (1 | SSB)
+## msr2: SpeciesRichness ~ (LandUse + UseIntensity) * Country + (1 | SS) + (1 | SSB)
+##      npar    AIC    BIC  logLik deviance  Chisq Df Pr(>Chisq)    
+## msr    11 7533.7 7592.2 -3755.8   7511.7                         
+## msr2   18 7510.9 7606.7 -3737.5   7474.9 36.739  7  5.257e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\hypertarget{reporting-the-results}{%
+\subsection{Reporting the results}\label{reporting-the-results}}
+
+For abundance data,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sjPlot}\SpecialCharTok{::}\FunctionTok{tab\_model}\NormalTok{(mab2, }
+                  \AttributeTok{show.re.var=} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+~
+
+logAbundance
+
+Predictors
+
+Estimates
+
+CI
+
+p
+
+(Intercept)
+
+-1.43
+
+-1.66~--~-1.19
+
+\textless0.001
+
+LandUse {[}Cropland{]}
+
+0.74
+
+0.48~--~0.99
+
+\textless0.001
+
+LandUse {[}Pasture{]}
+
+0.12
+
+-0.13~--~0.37
+
+0.361
+
+LandUse {[}Plantationforest{]}
+
+0.37
+
+-0.04~--~0.79
+
+0.080
+
+LandUse {[}Secondaryvegetation{]}
+
+0.46
+
+0.20~--~0.72
+
+0.001
+
+LandUse {[}Urban{]}
+
+0.15
+
+-0.69~--~0.99
+
+0.725
+
+UseIntensity {[}Intenseuse{]}
+
+-0.59
+
+-1.04~--~-0.15
+
+0.008
+
+UseIntensity {[}Light use{]}
+
+-0.11
+
+-0.32~--~0.10
+
+0.290
+
+Country {[}China{]}
+
+0.26
+
+-0.88~--~1.39
+
+0.658
+
+LandUse {[}Cropland{]} *Country {[}China{]}
+
+0.35
+
+-0.90~--~1.60
+
+0.585
+
+LandUse {[}Pasture{]} *Country {[}China{]}
+
+0.73
+
+-0.53~--~1.99
+
+0.259
+
+LandUse {[}Plantationforest{]} * Country {[}China{]}
+
+0.67
+
+-0.63~--~1.97
+
+0.312
+
+LandUse {[}Secondaryvegetation{]} * Country{[}China{]}
+
+0.25
+
+-0.92~--~1.42
+
+0.679
+
+LandUse {[}Urban{]} * Country{[}China{]}
+
+-0.02
+
+-1.56~--~1.51
+
+0.976
+
+UseIntensity {[}Intenseuse{]} * Country {[}China{]}
+
+0.08
+
+-0.56~--~0.73
+
+0.799
+
+UseIntensity {[}Light use{]}* Country {[}China{]}
+
+-0.56
+
+-0.96~--~-0.16
+
+0.007
+
+Random Effects
+
+σ2
+
+0.87
+
+τ00 SS
+
+0.56
+
+ICC
+
+0.39
+
+N SS
+
+85
+
+Observations
+
+1236
+
+Marginal R2 / Conditional R2
+
+0.077 / 0.440
+
+For richness data,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sjPlot}\SpecialCharTok{::}\FunctionTok{tab\_model}\NormalTok{(msr2, }
+                  \AttributeTok{show.re.var=} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+~
+
+SpeciesRichness
+
+Predictors
+
+Incidence Rate Ratios
+
+CI
+
+p
+
+(Intercept)
+
+7.02
+
+5.39~--~9.13
+
+\textless0.001
+
+LandUse {[}Cropland{]}
+
+1.12
+
+1.03~--~1.23
+
+0.011
+
+LandUse {[}Pasture{]}
+
+0.78
+
+0.71~--~0.85
+
+\textless0.001
+
+LandUse {[}Plantationforest{]}
+
+0.90
+
+0.80~--~1.00
+
+0.045
+
+LandUse {[}Secondaryvegetation{]}
+
+1.13
+
+1.04~--~1.22
+
+0.004
+
+LandUse {[}Urban{]}
+
+1.14
+
+0.90~--~1.43
+
+0.275
+
+UseIntensity {[}Intenseuse{]}
+
+0.85
+
+0.73~--~0.98
+
+0.023
+
+UseIntensity {[}Light use{]}
+
+1.13
+
+1.05~--~1.21
+
+0.001
+
+Country {[}China{]}
+
+0.61
+
+0.33~--~1.15
+
+0.129
+
+LandUse {[}Cropland{]} *Country {[}China{]}
+
+1.13
+
+0.74~--~1.73
+
+0.576
+
+LandUse {[}Pasture{]} *Country {[}China{]}
+
+1.21
+
+0.75~--~1.97
+
+0.438
+
+LandUse {[}Plantationforest{]} * Country {[}China{]}
+
+1.55
+
+1.00~--~2.40
+
+0.052
+
+LandUse {[}Secondaryvegetation{]} * Country{[}China{]}
+
+0.74
+
+0.54~--~1.03
+
+0.075
+
+LandUse {[}Urban{]} * Country{[}China{]}
+
+0.55
+
+0.23~--~1.32
+
+0.181
+
+UseIntensity {[}Intenseuse{]} * Country {[}China{]}
+
+0.77
+
+0.58~--~1.01
+
+0.062
+
+UseIntensity {[}Light use{]}* Country {[}China{]}
+
+0.63
+
+0.52~--~0.77
+
+\textless0.001
+
+Random Effects
+
+σ2
+
+0.15
+
+τ00 SSB
+
+0.03
+
+τ00 SS
+
+1.31
+
+ICC
+
+0.90
+
+N SS
+
+103
+
+N SSB
+
+302
+
+Observations
+
+1515
+
+Marginal R2 / Conditional R2
+
+0.075 / 0.906
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# gather the effects and confidence intervals using simulation}
+\NormalTok{sim\_eff\_ab }\OtherTok{\textless{}{-}} \FunctionTok{FEsim}\NormalTok{(mab2, }\DecValTok{1000}\NormalTok{)}
+
+\NormalTok{sim\_eff\_ab }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# drop the first row of the dataframe (the intercept value), since we\textquotesingle{}re plotting the effects \_compared\_ to this value}
+  \FunctionTok{slice}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \CommentTok{\# plot the coefficients plus/minus 95\% confidence intervals (1.96 x standard deviation)}
+  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ term, }\AttributeTok{ymin =}\NormalTok{ median }\SpecialCharTok{{-}} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ sd,}
+      \AttributeTok{ymax =}\NormalTok{ median }\SpecialCharTok{+} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ sd, }\AttributeTok{y =}\NormalTok{ median) }\SpecialCharTok{+}
+  \FunctionTok{geom\_pointrange}\NormalTok{() }\SpecialCharTok{+}
+  \CommentTok{\# add the line for the Intercept (Minimal Primary vegetation) at 0 (everything is compared to this)}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{size =} \FunctionTok{I}\NormalTok{(}\FloatTok{1.1}\NormalTok{), }\AttributeTok{color =} \FunctionTok{I}\NormalTok{(}\StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Median Effect Estimate"}\NormalTok{, }\AttributeTok{y =} \StringTok{"log(Rescaled Abundance + 0.01)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analysis-for-insecta-data_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+Same plot for richness data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# gather the effects and confidence intervals using simulation}
+\NormalTok{sim\_eff\_sr }\OtherTok{\textless{}{-}} \FunctionTok{FEsim}\NormalTok{(msr2, }\DecValTok{1000}\NormalTok{)}
+
+\NormalTok{sim\_eff\_sr }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# drop the first row of the dataframe (the intercept value), since we\textquotesingle{}re plotting the effecs \_compared\_ to this value}
+  \FunctionTok{slice}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \CommentTok{\# plot the coefficiets plus/minus 95\% confidence intervals (1.96 x standard deviation)}
+  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ term, }\AttributeTok{ymin =}\NormalTok{ median }\SpecialCharTok{{-}} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ sd,}
+      \AttributeTok{ymax =}\NormalTok{ median }\SpecialCharTok{+} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ sd, }\AttributeTok{y =}\NormalTok{ median) }\SpecialCharTok{+}
+  \FunctionTok{geom\_pointrange}\NormalTok{() }\SpecialCharTok{+}
+  \CommentTok{\# add the line for the Intercept (Minimal Primary vegetation) at 0 (everything is compared to this)}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{size =} \FunctionTok{I}\NormalTok{(}\FloatTok{1.1}\NormalTok{), }\AttributeTok{color =} \FunctionTok{I}\NormalTok{(}\StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Median Effect Estimate"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Species Richness"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Analysis-for-insecta-data_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\hypertarget{reference}{%
+\subsection{Reference}\label{reference}}
+
+De Palma, A., Sanchez-Ortiz, K. and Purvis, A. (2019) Calculating the
+Biodiversity Intactness Index: the PREDICTS implementation. Zenodo. doi:
+10.5281/ZENODO.3518067.
+
+\end{document}
